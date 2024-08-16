@@ -6,7 +6,8 @@ const secretUser = "UsErKeYsEcRet";
 function authorization(req, res, next) {
 
 
-  const auth = req.headers.authorization;
+  // const auth = req.headers.authorization;
+  const auth = localStorage.getItem("token");
   console.log(auth)
   const token = auth.split(' ')[1];
 
@@ -32,7 +33,8 @@ function authorization(req, res, next) {
 
 
 async function verification(req, res, next) {
-  auth = req.headers.token;
+  // auth = req.headers.token;
+  auht = localStorage.getItem("token");
   if (auth) {
 
     try {

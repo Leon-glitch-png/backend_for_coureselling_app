@@ -34,9 +34,10 @@ router.post('/signup', async (req, res) => {
     const newAdmin = new Admin({ username, password });
     await newAdmin.save();
     token = jwt.sign(username, secret);
-    return res.status(200).json({ message: "Admin created successfully", Authorization: token });
+    return res.status(200).json({ message: "Admin created successfully", token: token });
   }
 });
+
 
 router.post('/login', async (req, res) => {
   // logic to log in admin
@@ -46,7 +47,7 @@ router.post('/login', async (req, res) => {
   const admin = await Admin.findOne({ username, password });
   if (admin) {
     token = jwt.sign(username, secret);
-    res.status(200).json({ message: 'Logged in successfully', Authorization: token });
+    res.status(200).json({ message: 'Logged in successfully', token: token });
 
   } else {
     res.status(400).json({ message: 'Invalid credentials' });

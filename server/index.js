@@ -16,6 +16,7 @@ app.use("/", (req, res) => {
 mongoose.connect("mongodb+srv://dbUser:dbUserPassword@cluster0.kfjyvcn.mongodb.net/")
 
 
+
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
